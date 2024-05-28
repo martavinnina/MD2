@@ -39,9 +39,9 @@ public class Md2VinninaApplication {
 			public void run(String... args) throws Exception {
 				// TODO Auto-generated method stub
 				
-				Adress ad1 = new Adress(City.Ventspils, 11, "Robežu");
-				Adress ad2 = new Adress(City.Riga, 6, "Pulkveža");
-				Adress ad3 = new Adress(City.Dobele, 10, "Zaļā");
+				Adress ad1 = new Adress(City.Ventspils, 11, "Robezu");
+				Adress ad2 = new Adress(City.Riga, 6, "Pulkveza");
+				Adress ad3 = new Adress(City.Dobele, 10, "Zala");
 				adressRepo.save(ad1);
 				adressRepo.save(ad2);
 				adressRepo.save(ad3);
@@ -52,22 +52,24 @@ public class Md2VinninaApplication {
 				companyRepo.save(cas1);
 				companyRepo.save(cas2);
 				
-				CustomerAsPerson cap1 = new CustomerAsPerson("Jānis", "Lapiņš", "034560-21465", "29321921", ad1);
-				CustomerAsPerson cap2 = new CustomerAsPerson("Dana", "Vītola", "978654-21345", "29397851", ad2);
+				CustomerAsPerson cap1 = new CustomerAsPerson("Janis", "Lapins", "034560-21465", "29321921", ad1);
+				CustomerAsPerson cap2 = new CustomerAsPerson("Dana", "Vitola", "978654-21345", "29397851", ad2);
 				customerRepo.save(cap1);
 				customerRepo.save(cap2);
 				
-				Driver dr1 = new Driver("Ainārs", "Bumbieris","070878-21900", "AZ071597",12);
-				Driver dr2 = new Driver("Jānis", "Viesulis","045698-34560", "AB094275",3.5f);		
+				Driver dr1 = new Driver("Ainars", "Bumbieris","070878-21900", "AZ071597",12);
+				Driver dr2 = new Driver("Janis", "Viesulis","045698-34560", "AB094275",3.5f);		
 				driverRepo.save(dr1);
 				driverRepo.save(dr2);
 				
-				Parcel p1 =  new Parcel(LocalDateTime.of(2024, 3, 30, 15, 30, 0), ParcelSize.M, true, dr1);
-				Parcel p2 =  new Parcel(LocalDateTime.of(2024, 5, 16, 15, 30, 0), ParcelSize.S, false, dr2);
-				Parcel p3 =  new Parcel(LocalDateTime.of(2025, 6, 17, 15, 30, 0), ParcelSize.L, true, dr2);
+				Parcel p1 =  new Parcel(LocalDateTime.of(2024, 3, 30, 15, 30, 0), ParcelSize.M, true, dr1, cas1);
+				Parcel p2 =  new Parcel(LocalDateTime.of(2024, 5, 16, 15, 30, 0), ParcelSize.S, false, dr2, cas2);
+				Parcel p3 =  new Parcel(LocalDateTime.of(2025, 6, 17, 15, 30, 0), ParcelSize.L, true, dr2, cap1);
+				Parcel p4 =  new Parcel(LocalDateTime.of(2025, 6, 17, 15, 30, 0), ParcelSize.L, true, dr2, cap2);
 				parcelRepo.save(p1);
 				parcelRepo.save(p2);
 				parcelRepo.save(p3);
+				parcelRepo.save(p4);
 				
 				
 			}

@@ -10,10 +10,10 @@ public interface IDriverCRUDService {
 	public abstract ArrayList<Driver>selectAllDriver()
 	        throws Exception;
 	
-	public abstract ArrayList<Driver>selectDriverById(int idP)
+	public abstract Driver selectDriverById(int idP)
 	        throws Exception;
 	
-	public abstract ArrayList<Driver>deleteDriverById(int idP)
+	public abstract Driver deleteDriverById(int idP)
 	        throws Exception;
 	
 	public abstract void insertNewDriver(String name, String surname, String personCode, String licenseNo, float experienceInYears)

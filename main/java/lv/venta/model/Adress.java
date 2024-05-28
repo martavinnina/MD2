@@ -49,13 +49,13 @@ public class Adress {
 	private String StreetOrHouseTitle;
 	
 	//viena adrese vairakam kompanijam
-	@OneToMany(mappedBy = "address")
+	@OneToMany(mappedBy = "adress")
     @ToString.Exclude
 	private Collection<CustomerAsCompany> companyCustomers;
 	
 	
 	//viena adrese vairakam personam
-    @OneToMany(mappedBy = "address")
+    @OneToMany(mappedBy = "adress")
 	@ToString.Exclude
     private Collection<CustomerAsPerson> personCustomers;
 		

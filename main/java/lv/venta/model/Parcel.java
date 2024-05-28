@@ -58,7 +58,7 @@ public class Parcel {
 	
 	
 	@ManyToOne //vairakam pacinam viens pircejs
-	@JoinColumn(name = "IdC2")
+	@JoinColumn(name = "Name") //tā kā sakrit idP soferim un personai, tad ieliku name
 	private CustomerAsPerson customerAsPerson;
 	
 	//join column IDP (no driver)
@@ -67,13 +67,28 @@ public class Parcel {
 	private Driver driver;
 	
 	
-	public Parcel (LocalDateTime plannedDeliveryTime, ParcelSize size, boolean isFragile, Driver driver) {
+	//viena padot cas un otra cap
+	
+	public Parcel(LocalDateTime plannedDeliveryTime, ParcelSize size, boolean isFragile, Driver driver, CustomerAsCompany customerAsCompany) {
 		setPlannedDelivery(plannedDeliveryTime);
 		setSize(size);
 		setFragile(isFragile);
 		setPrice();
 		setDriver(driver);
+		setCustomerAsCompany(customerAsCompany);
 	}
+	
+	public Parcel(LocalDateTime plannedDeliveryTime, ParcelSize size, boolean isFragile, Driver driver, CustomerAsPerson customerAsPerson) {
+		setPlannedDelivery(plannedDeliveryTime);
+		setSize(size);
+		setFragile(isFragile);
+		setPrice();
+		setDriver(driver);
+		setCustomerAsPerson(customerAsPerson);
+	}
+	
+	
+	
 	
 	public void setPrice() {
 		//aprekins

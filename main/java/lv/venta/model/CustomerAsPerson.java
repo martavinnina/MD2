@@ -28,21 +28,17 @@ import lombok.ToString;
 @Entity
 public class CustomerAsPerson extends Person{
 
-	//bez mantošanas 
-		@Column(name = "IdC2")
-		@Id
-		@GeneratedValue(strategy = GenerationType.AUTO)
-		@Setter(value = AccessLevel.NONE)
-		private int idC2;
-		
+
 		@Column(name = "CustomerCode")
-		@NotNull
+		//@NotNull
 		private String customerCode; 
 		
-		@Column(name = "PersonCode")
+		
+		/*@Column(name = "PersonCode")
 		@NotNull
 		@Pattern(regexp = "[0-9]{1}[0-9]{8}")
 		private String personCode;
+		*/
 		
 		/*
 		@OneToOne
@@ -51,13 +47,14 @@ public class CustomerAsPerson extends Person{
 		*/
 		
 		//IdP paradisies saja tabula(CostumerAsPerson)
-		@OneToOne
+		/*@OneToOne
 		@JoinColumn(name = "IdP")
 		private Person person;
+		*/
 		
 		@Column(name = "PhoneNo")
 		@NotNull
-		@Pattern(regexp = "[2]{1}[0-9]{8}")
+		@Pattern(regexp = "[2]{1}[0-9]{7}")
 		private String phoneNo;
 		
 		
@@ -77,6 +74,6 @@ public class CustomerAsPerson extends Person{
 		}
 		
 		 public void customerCodeCreation(){
-		        this.customerCode = this.getIdC2() + "_person_" + this.getPersonCode();
+		        this.customerCode = super.getIdP() + "_person_" + this.getPersonCode();
 		    }
 }

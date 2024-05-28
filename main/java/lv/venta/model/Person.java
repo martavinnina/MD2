@@ -25,11 +25,11 @@ import lombok.ToString;
 @ToString
 @Table(name="PersonTable")
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) //visas klases, kas manto so bus IdP no sis klases
 
 public class Person {
 	
-	@Column(name = "IdP") //attiecas uz Driver
+	@Column(name = "IdP") 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
@@ -54,15 +54,13 @@ public class Person {
 	@Pattern(regexp = "[0-9]{6}-[0-9]{5}")
 	private String personCode;
 	
-	@OneToOne
-	@JoinColumn(name = "IdA")
-	private Adress adress;
 	
 	
-	@OneToOne(mappedBy = "customerAsPerson")
+	
+	/*@OneToOne(mappedBy = "customerAsPerson")
 	@ToString.Exclude //lai nav bezgaliga izsauksana starp prof un course
 	private CustomerAsPerson customerAsPerson;
-	
+	*/
 	
 	
 	public Person(String name, String surname, String personCode) {

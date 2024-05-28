@@ -41,14 +41,14 @@ public class CustomerAsCompany {
 	
 	
 	@Column(name = "CustomerCode")
-	@NotNull
+	//@NotNull
 	@Setter(value = AccessLevel.NONE)
 	private String customerCode; 
 	//TODO 
 	
 	@Column(name = "PhoneNo")
 	@NotNull
-	@Pattern(regexp = "[2]{1}[0-9]{8}")
+	@Pattern(regexp = "[2]{1}[0-9]{7}")
 	private String phoneNo;
 	
 	@Column(name = "Title")
