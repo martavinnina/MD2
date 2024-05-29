@@ -58,7 +58,7 @@ public class Parcel {
 	
 	
 	@ManyToOne //vairakam pacinam viens pircejs
-	@JoinColumn(name = "Name") //tā kā sakrit idP soferim un personai, tad ieliku name
+	@JoinColumn(name = "IdC2") //tā kā sakrit idP soferim un personai, tad ieliku name
 	private CustomerAsPerson customerAsPerson;
 	
 	//join column IDP (no driver)

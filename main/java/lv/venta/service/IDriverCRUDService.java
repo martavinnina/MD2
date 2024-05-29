@@ -13,7 +13,7 @@ public interface IDriverCRUDService {
 	public abstract Driver selectDriverById(int idP)
 	        throws Exception;
 	
-	public abstract Driver deleteDriverById(int idP)
+	public abstract void deleteDriverById(int idP)
 	        throws Exception;
 	
 	public abstract void insertNewDriver(String name, String surname, String personCode, String licenseNo, float experienceInYears)

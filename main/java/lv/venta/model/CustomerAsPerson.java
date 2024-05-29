@@ -2,6 +2,8 @@ package lv.venta.model;
 
 import java.util.Collection;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,54 +28,48 @@ import lombok.ToString;
 @ToString
 @Table(name="CustomerAsPersonTable")
 @Entity
-public class CustomerAsPerson extends Person{
+
+public class CustomerAsPerson {
 
 
-		@Column(name = "CustomerCode")
-		//@NotNull
-		private String customerCode; 
-		
-		
-		/*@Column(name = "PersonCode")
-		@NotNull
-		@Pattern(regexp = "[0-9]{1}[0-9]{8}")
-		private String personCode;
-		*/
-		
-		/*
-		@OneToOne
-		@JoinColumn(name = "PersonCode")
-		private Person person;
-		*/
-		
-		//IdP paradisies saja tabula(CostumerAsPerson)
-		/*@OneToOne
-		@JoinColumn(name = "IdP")
-		private Person person;
-		*/
-		
-		@Column(name = "PhoneNo")
-		@NotNull
-		@Pattern(regexp = "[2]{1}[0-9]{7}")
-		private String phoneNo;
-		
-		
-		@ManyToOne //vairakiem customer persons viena adrese
-		@JoinColumn(name = "IdA")
-		private Adress adress;
-		
-		@OneToMany(mappedBy = "customerAsPerson") 
-		@ToString.Exclude 
-		private Collection<Parcel> parcelsPerson; 
-		
-		
-		public CustomerAsPerson(String name, String surname, String personCode, String phoneNo, Adress adress) {
-			super(name, surname, personCode);
-			setPhoneNo(phoneNo);
-			setAdress(adress);
-		}
-		
-		 public void customerCodeCreation(){
-		        this.customerCode = super.getIdP() + "_person_" + this.getPersonCode();
-		    }
+	@Column(name = "IdC2")
+	@Setter(value = AccessLevel.NONE)
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int idC2;
+	
+	
+	@Column(name = "CustomerCode")
+	private String customerCode; 
+	
+	
+	@Column(name = "PhoneNo")
+	@NotNull
+	@Pattern(regexp = "[2]{1}[0-9]{7}")
+	private String phoneNo;
+	
+	
+	@ManyToOne //vairakiem customer persons viena adrese
+	@JoinColumn(name = "IdA")
+	private Adress adress;
+	
+	@OneToMany(mappedBy = "customerAsPerson") 
+	@ToString.Exclude 
+	private Collection<Parcel> parcelsPerson; 
+	
+	
+	 @OneToOne
+	 @JoinColumn(name = "IdP")
+	 private Person person;
+	
+	 
+	public CustomerAsPerson(Person person, String phoneNo, Adress adress) {
+		setPerson(person);
+		setPhoneNo(phoneNo);
+		setAdress(adress);
+	}
+	
+	public void customerCodeCreation(){
+	       this.customerCode = this.getIdC2() + "_person_" + this.person.getPersonCode();
+	   }
 }

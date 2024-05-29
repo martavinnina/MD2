@@ -16,11 +16,13 @@ import lv.venta.model.CustomerAsPerson;
 import lv.venta.model.Driver;
 import lv.venta.model.Parcel;
 import lv.venta.model.ParcelSize;
+import lv.venta.model.Person;
 import lv.venta.repo.IAdressRepo;
 import lv.venta.repo.ICustomerAsCompanyRepo;
 import lv.venta.repo.ICustomerAsPersonRepo;
 import lv.venta.repo.IDriverRepo;
 import lv.venta.repo.IParcelRepo;
+import lv.venta.repo.IPersonRepo;
 
 
 @SpringBootApplication
@@ -31,7 +33,7 @@ public class Md2VinninaApplication {
 	}
 	@Bean
 	public CommandLineRunner testDatabaseLayer(IAdressRepo adressRepo, ICustomerAsCompanyRepo companyRepo, 
-			ICustomerAsPersonRepo customerRepo, IDriverRepo driverRepo, IParcelRepo parcelRepo)
+			ICustomerAsPersonRepo customerRepo, IDriverRepo driverRepo, IParcelRepo parcelRepo, IPersonRepo persRepo)
 	{
 		return new CommandLineRunner() {
 
@@ -52,15 +54,28 @@ public class Md2VinninaApplication {
 				companyRepo.save(cas1);
 				companyRepo.save(cas2);
 				
-				CustomerAsPerson cap1 = new CustomerAsPerson("Janis", "Lapins", "034560-21465", "29321921", ad1);
-				CustomerAsPerson cap2 = new CustomerAsPerson("Dana", "Vitola", "978654-21345", "29397851", ad2);
+				Person pers1 = new Person ("Janis", "Lapins", "034560-21465");
+				Person pers2 = new Person ("Dana", "Vitola", "978654-21345");
+				persRepo.save(pers1);
+				persRepo.save(pers2);
+				
+				
+				CustomerAsPerson cap1 = new CustomerAsPerson(pers1, "29321921", ad1);
+				CustomerAsPerson cap2 = new CustomerAsPerson(pers2, "29397851", ad2);
 				customerRepo.save(cap1);
 				customerRepo.save(cap2);
+				
+				cap1.customerCodeCreation();
+				cap2.customerCodeCreation();
+				customerRepo.save(cap1);
+				customerRepo.save(cap2);
+				
 				
 				Driver dr1 = new Driver("Ainars", "Bumbieris","070878-21900", "AZ071597",12);
 				Driver dr2 = new Driver("Janis", "Viesulis","045698-34560", "AB094275",3.5f);		
 				driverRepo.save(dr1);
 				driverRepo.save(dr2);
+				
 				
 				Parcel p1 =  new Parcel(LocalDateTime.of(2024, 3, 30, 15, 30, 0), ParcelSize.M, true, dr1, cas1);
 				Parcel p2 =  new Parcel(LocalDateTime.of(2024, 5, 16, 15, 30, 0), ParcelSize.S, false, dr2, cas2);
@@ -70,7 +85,6 @@ public class Md2VinninaApplication {
 				parcelRepo.save(p2);
 				parcelRepo.save(p3);
 				parcelRepo.save(p4);
-				
 				
 			}
 			

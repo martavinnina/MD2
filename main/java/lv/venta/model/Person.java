@@ -1,5 +1,8 @@
 package lv.venta.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -54,7 +57,9 @@ public class Person {
 	@Pattern(regexp = "[0-9]{6}-[0-9]{5}")
 	private String personCode;
 	
-	
+	@OneToOne(mappedBy = "person")
+	@ToString.Exclude
+	private CustomerAsPerson customerAsPerson;
 	
 	
 	/*@OneToOne(mappedBy = "customerAsPerson")

@@ -44,26 +44,19 @@ public class DriverCRUDServiceImpl implements IDriverCRUDService{
 			throw new Exception("There is no driver with id" + idP);
 		
 		 Driver result = driverRepo.findById(idP).get();
-		
-		
-		//if(result.isEmpty()) throw new Exception("There is no driver with this id");		
-		
 		return result;
 	}
 
 	
 	@Override
-	public Driver deleteDriverById(int idP) throws Exception {
-		/*if(idP <= 0) throw new Exception("id should be positive");
+	public void deleteDriverById(int idP) throws Exception {
+		if(idP <= 0) throw new Exception("id should be positive");
 		
 		if(!driverRepo.existsById(idP))
 			throw new Exception("There is no driver with id" + idP);
-
-	    driverRepo.deleteById(idP);
-	    return (ArrayList<Driver>) driverRepo.findAll();
-	    */
-		// TODO Auto-generated method stub
-		return null;
+		
+		//Driver result = driverRepo.deleteById(idP);
+		//return result;
 	     
 	}
 	
@@ -71,8 +64,14 @@ public class DriverCRUDServiceImpl implements IDriverCRUDService{
 	@Override
 	public void insertNewDriver(String name, String surname, String personCode, String licenseNo,
 			float experienceInYears) throws Exception {
+		
+		/* Driver driver = driverRepo.findByLicenseNo(licenseNo);
+		 if (driver == null) {
+			 
+		 }
 		// TODO Auto-generated method stub
 		
+		*/
 	}
 
 	@Override
