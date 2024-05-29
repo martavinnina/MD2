@@ -49,10 +49,15 @@ public class Md2VinninaApplication {
 				adressRepo.save(ad3);
 				
 				
-				CustomerAsCompany cas1 = new CustomerAsCompany("12345679", "28615197","Ziedi&pušķi", ad2);
-				CustomerAsCompany cas2 = new CustomerAsCompany("09845765", "20067890","EzītisMiglā", ad3);
-				companyRepo.save(cas1);
-				companyRepo.save(cas2);
+				CustomerAsCompany cac1 = new CustomerAsCompany("12345679", "28615197","Ziedi&pušķi", ad2);
+				CustomerAsCompany cac2 = new CustomerAsCompany("09845765", "20067890","EzītisMiglā", ad3);
+				companyRepo.save(cac1);
+				companyRepo.save(cac2);
+				
+				cac1.CustomerCodeCreation();
+				cac2.CustomerCodeCreation();
+				companyRepo.save(cac1);
+				companyRepo.save(cac2);
 				
 				Person pers1 = new Person ("Janis", "Lapins", "034560-21465");
 				Person pers2 = new Person ("Dana", "Vitola", "978654-21345");
@@ -77,8 +82,8 @@ public class Md2VinninaApplication {
 				driverRepo.save(dr2);
 				
 				
-				Parcel p1 =  new Parcel(LocalDateTime.of(2024, 3, 30, 15, 30, 0), ParcelSize.M, true, dr1, cas1);
-				Parcel p2 =  new Parcel(LocalDateTime.of(2024, 5, 16, 15, 30, 0), ParcelSize.S, false, dr2, cas2);
+				Parcel p1 =  new Parcel(LocalDateTime.of(2024, 3, 30, 15, 30, 0), ParcelSize.M, true, dr1, cac1);
+				Parcel p2 =  new Parcel(LocalDateTime.of(2024, 5, 16, 15, 30, 0), ParcelSize.S, false, dr2, cac2);
 				Parcel p3 =  new Parcel(LocalDateTime.of(2025, 6, 17, 15, 30, 0), ParcelSize.L, true, dr2, cap1);
 				Parcel p4 =  new Parcel(LocalDateTime.of(2025, 6, 17, 15, 30, 0), ParcelSize.L, true, dr2, cap2);
 				parcelRepo.save(p1);

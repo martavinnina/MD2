@@ -42,7 +42,7 @@ public class CustomerAsCompany {
 	
 	@Column(name = "CustomerCode")
 	//@NotNull
-	@Setter(value = AccessLevel.NONE)
+	//@Setter(value = AccessLevel.NONE)
 	private String customerCode; 
 	//TODO 
 	

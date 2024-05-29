@@ -67,7 +67,7 @@ public class Parcel {
 	private Driver driver;
 	
 	
-	//viena padot cas un otra cap
+
 	
 	public Parcel(LocalDateTime plannedDeliveryTime, ParcelSize size, boolean isFragile, Driver driver, CustomerAsCompany customerAsCompany) {
 		setPlannedDelivery(plannedDeliveryTime);
