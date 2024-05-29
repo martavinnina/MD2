@@ -16,7 +16,7 @@ public interface IDriverCRUDService {
 	public abstract void deleteDriverById(int idP)
 	        throws Exception;
 	
-	public abstract void insertNewDriver(String name, String surname, String personCode, String licenseNo, float experienceInYears)
+	public abstract Driver insertNewDriver(String name, String surname, String personCode, String licenseNo, float experienceInYears)
 	     throws Exception;
 	
 	public abstract void updateDriverById(int idP, String name, String surname, String personCode, String licenseNo, float experienceInYears)

@@ -13,27 +13,21 @@ import lv.venta.repo.IDriverRepo;
 import lv.venta.repo.IParcelRepo;
 import lv.venta.service.IDriverCRUDService;
 
-@Service
+@Service //Obligati!!
 public class DriverCRUDServiceImpl implements IDriverCRUDService{
 	
-	@Autowired
-	private IAdressRepo adressRepo;
 	
-	
-	@Autowired
-	private ICustomerAsPersonRepo customerRepo;
-	
-	@Autowired
+	@Autowired 
 	private IDriverRepo driverRepo;
 	
-	@Autowired
-	private IParcelRepo parcelRepo;
 	
 	
 	@Override
 	public ArrayList<Driver> selectAllDriver() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if (driverRepo.count()==0)
+			throw new Exception("Driver list is empty");
+		
+		return (ArrayList<Driver>) driverRepo.findAll();
 	}
 
 	@Override
@@ -43,7 +37,7 @@ public class DriverCRUDServiceImpl implements IDriverCRUDService{
 		if(!driverRepo.existsById(idP))
 			throw new Exception("There is no driver with id" + idP);
 		
-		 Driver result = driverRepo.findById(idP).get();
+		Driver result = driverRepo.findById(idP).get();
 		return result;
 	}
 
@@ -54,30 +48,38 @@ public class DriverCRUDServiceImpl implements IDriverCRUDService{
 		
 		if(!driverRepo.existsById(idP))
 			throw new Exception("There is no driver with id" + idP);
-		driverRepo.
-		//Driver result = driverRepo.deleteById(idP);
-		//return result;
-	     
+		driverRepo.deleteById(idP);
 	}
 	
 
 	@Override
-	public void insertNewDriver(String name, String surname, String personCode, String licenseNo,
+	public Driver insertNewDriver(String name, String surname, String personCode, String licenseNo,
 			float experienceInYears) throws Exception {
 		
-		/* Driver driver = driverRepo.findByLicenseNo(licenseNo);
-		 if (driver == null) {
-			 
-		 }
-		// TODO Auto-generated method stub
+		if (name == null || surname == null || personCode == null || experienceInYears < 0)
+			throw new Exception("Problems with input params");
 		
-		*/
+		//Driver foundDriver = driverRepo.findByNameAndSurnameAndPersonCode(name,surname,personCode);
+		
+		if(driverRepo.existsByNameAndSurnameAndPersonCode) 
+			throw new Exception("Driver already exists!");
+		
+		Driver newDriver = new Driver(name, surname, personCode, licenseNo, experienceInYears);
+		return newDriver;
 	}
 
+	
 	@Override
 	public void updateDriverById(int idP, String name, String surname, String personCode, String licenseNo,
 			float experienceInYears) throws Exception {
-		// TODO Auto-generated method stub
+		
+		Driver updateDriver = selectDriverById(idP);
+		if(name != null) updateDriver.setName(name);
+		if(surname != null) updateDriver.setSurname(surname);
+		if(personCode != null) updateDriver.setPersonCode(personCode);
+		if(licenseNo != null) updateDriver.setLicenseNo(licenseNo);
+		if(experienceInYears > 0) updateDriver.setLicenseNo(licenseNo);
+		driverRepo.save(updateDriver);
 		
 	}
 

@@ -2,15 +2,20 @@ package lv.venta.service.impl;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import lv.venta.model.City;
 import lv.venta.model.Parcel;
+import lv.venta.repo.IParcelRepo;
 import lv.venta.service.IParcelService;
 
-@Service
+@Service //Obligati!!
 public class ParcelServiceImpl implements IParcelService{
 
+	@Autowired
+	IParcelRepo parcelRepo;
+	
 	@Override
 	public ArrayList<Parcel> selectAllParcelsByCustomerId(int idC) throws Exception {
 		// TODO Auto-generated method stub
@@ -25,8 +30,11 @@ public class ParcelServiceImpl implements IParcelService{
 
 	@Override
 	public ArrayList<Parcel> selectAllParcelsPriceLessThan(float price) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		if(price < 0 || price > 10000 ) throw new Exception("The limit of price is wrong");
+		
+		ArrayList<Parcel> result = parcelRepo.findByPriceLessThan(price);
+		
+		return result;
 	}
 
 	@Override

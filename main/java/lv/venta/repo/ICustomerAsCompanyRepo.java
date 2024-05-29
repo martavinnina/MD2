@@ -6,4 +6,6 @@ import lv.venta.model.CustomerAsCompany;
 
 public interface ICustomerAsCompanyRepo extends CrudRepository<CustomerAsCompany, Integer>{
 
+	boolean existsByCompanyRegNoAndTitle = false;
+
 }

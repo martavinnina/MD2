@@ -8,9 +8,8 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface IDriverRepo extends CrudRepository<Driver, Integer>{
 
-	//Driver findByLicenseNo(String licenseNo);
+	boolean existsByNameAndSurnameAndPersonCode = false;
 
-	
-
+	//Driver findByNameAndSurnameAndPersonCode(String name, String surname, String personCode);
 
 }
