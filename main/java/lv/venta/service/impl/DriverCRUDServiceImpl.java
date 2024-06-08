@@ -47,10 +47,11 @@ public class DriverCRUDServiceImpl implements IDriverCRUDService{
 		
 		if(!driverRepo.existsById(idP))
 			throw new Exception("There is no driver with id" + idP);
-		driverRepo.deleteById(idP);
+		Driver deleteDriver = selectDriverById(idP);
+		driverRepo.delete(deleteDriver);
 	}
 	
-
+	
 	@Override
 	public Driver insertNewDriver(String name, String surname, String personCode, String licenseNo,
 			float experienceInYears) throws Exception {
@@ -60,10 +61,11 @@ public class DriverCRUDServiceImpl implements IDriverCRUDService{
 		
 		//Driver foundDriver = driverRepo.findByNameAndSurnameAndPersonCode(name,surname,personCode);
 		
-		if(driverRepo.existsByNameAndSurnameAndPersonCode) 
+		if(driverRepo.existsByNameAndSurnameAndPersonCode) //nestrada 
 			throw new Exception("Driver already exists!");
 		
 		Driver newDriver = new Driver(name, surname, personCode, licenseNo, experienceInYears);
+		driverRepo.save(newDriver);
 		return newDriver;
 	}
 
