@@ -22,15 +22,14 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+@Table(name="CustomerAsPersonTable")
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@Table(name="CustomerAsPersonTable")
-@Entity
 
-public class CustomerAsPerson {
-
+public class CustomerAsPerson extends Person {
 
 	@Column(name = "IdC2")
 	@Setter(value = AccessLevel.NONE)
@@ -58,18 +57,19 @@ public class CustomerAsPerson {
 	private Collection<Parcel> parcelsPerson; 
 	
 	
-	 @OneToOne
+	 /*@OneToOne
 	 @JoinColumn(name = "IdP")
 	 private Person person;
-	
+	*/
 	 
-	public CustomerAsPerson(Person person, String phoneNo, Adress adress) {
-		setPerson(person);
+	
+	public CustomerAsPerson(String name, String surname, String personCode, String phoneNo, Adress adress) {
+		super(name, surname, personCode);
 		setPhoneNo(phoneNo);
 		setAdress(adress);
 	}
 	
 	public void customerCodeCreation(){
-	       this.customerCode = this.getIdC2() + "_person_" + this.person.getPersonCode();
+	       this.customerCode = this.getIdC2() + "_person_" + this.getPersonCode();
 	   }
 }

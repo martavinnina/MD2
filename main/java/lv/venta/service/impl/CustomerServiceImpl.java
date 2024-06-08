@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import lv.venta.model.Adress;
 import lv.venta.model.CustomerAsCompany;
 import lv.venta.model.CustomerAsPerson;
-import lv.venta.model.Person;
 import lv.venta.repo.ICustomerAsCompanyRepo;
 import lv.venta.repo.ICustomerAsPersonRepo;
 import lv.venta.service.ICustomerService;
@@ -21,16 +20,16 @@ public class CustomerServiceImpl implements ICustomerService {
 	ICustomerAsCompanyRepo companyRepo;
 	
 	@Override
-	public CustomerAsPerson insertNewCustomerAsPerson(Person person, String phoneNo, Adress adress)
+	public CustomerAsPerson insertNewCustomerAsPerson(String name, String surname, String personCode, String phoneNo, Adress adress)
 			throws Exception {
 		
-		if (person == null || phoneNo == null || adress == null)
+		if (name == null || surname == null ||  personCode == null || phoneNo == null || adress == null)
 			throw new Exception("Problems with input params");
 		
 		//if(customerRepo.existsByPers) 
 		//	throw new Exception("This customer as person already exists!");
 		
-		CustomerAsPerson newCustomerAsPerson = new CustomerAsPerson(person, phoneNo, adress);
+		CustomerAsPerson newCustomerAsPerson = new CustomerAsPerson(name, surname, personCode, phoneNo, adress);
 		return newCustomerAsPerson;
 		// TODO Auto-generated method stub
 		

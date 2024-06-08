@@ -30,7 +30,7 @@ public class Parcel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Setter(value = AccessLevel.NONE)
-	private int idP;
+	private int idPa;
 	
 	@Column(name = "IsFragile")
 	private boolean isFragile;
@@ -61,6 +61,8 @@ public class Parcel {
 	@JoinColumn(name = "IdC2") //tā kā sakrit idP soferim un personai, tad ieliku name
 	private CustomerAsPerson customerAsPerson;
 	
+	
+	//kolonna paradisies saja tabula
 	//join column IDP (no driver)
 	@ManyToOne //vairakam pacinam viens soferis
 	@JoinColumn(name = "IdP")

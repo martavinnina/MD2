@@ -22,7 +22,7 @@ import lv.venta.repo.ICustomerAsCompanyRepo;
 import lv.venta.repo.ICustomerAsPersonRepo;
 import lv.venta.repo.IDriverRepo;
 import lv.venta.repo.IParcelRepo;
-import lv.venta.repo.IPersonRepo;
+//import lv.venta.repo.IPersonRepo;
 
 
 @SpringBootApplication
@@ -32,8 +32,9 @@ public class Md2VinninaApplication {
 		SpringApplication.run(Md2VinninaApplication.class, args);
 	}
 	@Bean
+	//, IPersonRepo persRepo
 	public CommandLineRunner testDatabaseLayer(IAdressRepo adressRepo, ICustomerAsCompanyRepo companyRepo, 
-			ICustomerAsPersonRepo customerRepo, IDriverRepo driverRepo, IParcelRepo parcelRepo, IPersonRepo persRepo)
+			ICustomerAsPersonRepo customerRepo, IDriverRepo driverRepo, IParcelRepo parcelRepo)
 	{
 		return new CommandLineRunner() {
 
@@ -59,14 +60,14 @@ public class Md2VinninaApplication {
 				companyRepo.save(cac1);
 				companyRepo.save(cac2);
 				
-				Person pers1 = new Person ("Janis", "Lapins", "034560-21465");
+				/*Person pers1 = new Person ("Janis", "Lapins", "034560-21465");
 				Person pers2 = new Person ("Dana", "Vitola", "978654-21345");
 				persRepo.save(pers1);
 				persRepo.save(pers2);
+				*/
 				
-				
-				CustomerAsPerson cap1 = new CustomerAsPerson(pers1, "29321921", ad1);
-				CustomerAsPerson cap2 = new CustomerAsPerson(pers2, "29397851", ad2);
+				CustomerAsPerson cap1 = new CustomerAsPerson("Janis", "Lapins", "034560-21465", "29321921", ad1);
+				CustomerAsPerson cap2 = new CustomerAsPerson("Dana", "Vitola", "978654-21345", "29397851", ad2);
 				customerRepo.save(cap1);
 				customerRepo.save(cap2);
 				
@@ -75,7 +76,7 @@ public class Md2VinninaApplication {
 				customerRepo.save(cap1);
 				customerRepo.save(cap2);
 				
-				
+				//
 				Driver dr1 = new Driver("Ainars", "Bumbieris","070878-21900", "AZ071597",12);
 				Driver dr2 = new Driver("Janis", "Viesulis","045698-34560", "AB094275",3.5f);		
 				driverRepo.save(dr1);

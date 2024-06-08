@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<body>
+	<p th:text="${msg}"></p>
+	<table> 
+		<tr th:each="tempD: ${mydata}">
+		<td th:text="${tempD.getIdP()}"></td>
+		<td th:text="${tempD.getName()}"> </td>
+		<td th:text="${tempD.getSurname}"> </td>
+		<td th:text="${tempD.getPersonCode}"> </td>
+		<td th:text="${tempD.getLicenseNo()}"> </td>
+		<td th:text="${tempD.getExperienceInYears()}"> </td>
+		
+		</tr>
+	</table>
+	
+</body>
+
+</html>
