@@ -30,6 +30,7 @@ public class CustomerServiceImpl implements ICustomerService {
 		//	throw new Exception("This customer as person already exists!");
 		
 		CustomerAsPerson newCustomerAsPerson = new CustomerAsPerson(name, surname, personCode, phoneNo, adress);
+		customerRepo.save(newCustomerAsPerson);
 		return newCustomerAsPerson;
 		// TODO Auto-generated method stub
 		
@@ -44,7 +45,7 @@ public class CustomerServiceImpl implements ICustomerService {
 			throw new Exception("Driver already exists!");
 		
 		CustomerAsCompany newCustomerAsCompany = new CustomerAsCompany(companyRegNo, phoneNo,title, adress);
-		
+		companyRepo.save(newCustomerAsCompany);
 		return newCustomerAsCompany;
 	}
 

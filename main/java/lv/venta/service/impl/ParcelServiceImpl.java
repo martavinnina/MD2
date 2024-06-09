@@ -30,7 +30,7 @@ public class ParcelServiceImpl implements IParcelService{
 	private IDriverRepo driverRepo;
 	
 	@Override
-	public ArrayList<Parcel> selectAllParcelsByCustomerIdC2(int idC2) throws Exception {
+	public ArrayList<Parcel> selectAllParcelsByCustomerAsPersonId(int idC2) throws Exception {
 		
 		if(idC2 <= 0) throw new Exception("id should be positive");
 		
@@ -45,7 +45,7 @@ public class ParcelServiceImpl implements IParcelService{
 	}
 
 	@Override
-	public ArrayList<Parcel> selectAllParcelsDeliveredByDriverIdP(int idP) throws Exception {
+	public ArrayList<Parcel> selectAllParcelsDeliveredByDriverId(int idP) throws Exception {
 		if(idP <= 0) throw new Exception("id should be positive");
 		
 		if(!driverRepo.existsById(idP)) //izveidota funkcija, kas atbilst tikai customerAsPerson
@@ -80,13 +80,13 @@ public class ParcelServiceImpl implements IParcelService{
 	}
 
 	@Override
-	public void insertNewParcelByCustomerCodeAndDriverIdP(String customerCode, int idP) throws Exception {
+	public void insertNewParcelByCustomerCodeAndDriverId(String customerCode, int idP) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void changeParcelDriverByParcelIdPaAndDriverIdP(int idPa, int idDr) throws Exception {
+	public void changeParcelDriverByParcelIdPaAndDriverId(int idPa, int idDr) throws Exception {
 		// TODO Auto-generated method stub
 		
 	}

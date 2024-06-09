@@ -1,0 +1,39 @@
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+	<p>Please insert new customer company!</p>
+
+	<form action="#" th:action="@{customer/insert/company}" th:object="${customerAsCompany}" th:method="post">
+		<table>
+			<tr>
+				<td>RegNo:</td>
+				<td> <input type="text" th:field="*{companyRegNo}" /> </td>
+				<td th:if="${#fields.hasErrors('companyRegNo')}" th:errors="*{companyRegNo}" ></td>
+			</tr>
+			<tr>
+				<td>PhoneNo:</td>
+				<td> <input type="text" th:field="*{phoneNo}" /> </td>
+				<td th:if="${#fields.hasErrors('phoneNo')}" th:errors="*{phoneNo}" ></td>
+			</tr>
+			<tr>
+				<td>Title:</td>
+				<td> <input type="text" th:field="*{title}" /> </td>
+				<td th:if="${#fields.hasErrors('title')}" th:errors="*{title}" ></td>
+			</tr>
+			<tr>
+				<td>Adress:</td>
+				<td> <input type="text" th:field="*{adress}" /> </td>
+				<td th:if="${#fields.hasErrors('adress')}" th:errors="*{adress}" ></td>
+			</tr>
+
+			<tr>
+				<td> <input type="submit" name="Save"/></td>
+			</tr>
+		</table>
+	</form>
+
+
+</body>
+
+
+</html>

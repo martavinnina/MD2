@@ -8,10 +8,10 @@ import lv.venta.model.Parcel;
 public interface IParcelService {
 
 	//i
-	public abstract ArrayList<Parcel>selectAllParcelsByCustomerIdC2(int idC2)
+	public abstract ArrayList<Parcel>selectAllParcelsByCustomerAsPersonId(int idC2)
 	        throws Exception;
 	//ii
-	public abstract ArrayList<Parcel>selectAllParcelsDeliveredByDriverIdP(int idP)
+	public abstract ArrayList<Parcel>selectAllParcelsDeliveredByDriverId(int idP)
 	        throws Exception;
 	//iii
 	public abstract ArrayList<Parcel>selectAllParcelsPriceLessThan(float sizePrice)
@@ -22,11 +22,11 @@ public interface IParcelService {
 	        throws Exception;
 	
 	//v
-	public abstract void insertNewParcelByCustomerCodeAndDriverIdP(String customerCode, int idP)
+	public abstract void insertNewParcelByCustomerCodeAndDriverId(String customerCode, int idP)
 			 throws Exception;
 	
 	//vi
-	public abstract void changeParcelDriverByParcelIdPaAndDriverIdP(int idPa, int idDr)
+	public abstract void changeParcelDriverByParcelIdPaAndDriverId(int idPa, int idDr)
 			 throws Exception;
 	
 	//vii

@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+	
+<body>
+	<p th:text="${msg}"></p>
+	<table> 
+		<tr th:each="tempPa: ${mydata}">
+		<td th:text="${tempPa.getPlannedDeliveryTime()}"></td>
+		<td th:text="${tempPa.getSize()}"> </td>
+		<td th:text="${tempPa.getIsFragile}"> </td>
+		<td th:text="${tempPa.getDriver}"> </td>
+		<td th:text="${tempPa.getCustomerAsCompany()}"> </td>
+		<td th:text="${tempPa.getCustomerAsPerson()}"> </td>
+		
+		</tr>
+	</table>
+	
+</body>
+
+</html>

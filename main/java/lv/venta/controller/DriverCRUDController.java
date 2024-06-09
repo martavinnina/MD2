@@ -124,7 +124,7 @@ public class DriverCRUDController {
 		{
 			driverService.updateDriverById(id,driver.getName(), driver.getSurname(), 
 				driver.getPersonCode(), driver.getLicenseNo(), driver.getExperienceInYears());
-			return "redirect:/product/all"; //var arī "redirect:/product/all/" + id; vai arī "redirect:/product/one?id=" + id;
+			return "redirect:/driver/all"; 
 		}
 		catch (Exception e) {
 			model.addAttribute("errormsg", e.getMessage());
